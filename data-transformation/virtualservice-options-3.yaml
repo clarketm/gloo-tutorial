@@ -1,0 +1,11 @@
+options:
+  transformations:
+    requestTransformation:
+      transformationTemplate:
+        headers:
+          # By updating the :path pseudo-header, we update the request URI
+          ":path":
+            text: '{% if header("boo") == "far" %}/post{% else %}{{ header(":path") }}{% endif %}'
+          # By updating the :method pseudo-header, we update the request HTTP method
+          ":method":
+            text: '{% if header("boo") == "far" %}POST{% else %}{{ header(":method") }}{% endif %}'

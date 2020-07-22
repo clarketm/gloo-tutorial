@@ -1,0 +1,33 @@
+spec:
+  bindAddress: '::'
+  bindPort: 8080
+  httpGateway: {}
+  options:
+    accessLoggingService:
+      accessLog:
+      - fileSink:
+          jsonFormat:
+            # The 'pod' dynamic metadata entry that is set by the Gloo transformation filter
+            pod_name: '%DYNAMIC_METADATA(io.solo.transformation:pod_name)%'
+            # The 'error' dynamic metadata entry that is set by the Gloo transformation filter
+            endpoint_url: '%DYNAMIC_METADATA(io.solo.transformation:endpoint_url)%'
+            # HTTP method name
+            httpMethod: '%REQ(:METHOD)%'
+            # Protocol. Currently either HTTP/1.1 or HTTP/2.
+            protocol: '%PROTOCOL%'
+            # HTTP response code. Note that a response code of ‘0’ means that the server never sent the
+            # beginning of a response. This generally means that the (downstream) client disconnected.
+            responseCode: '%RESPONSE_CODE%'
+            # Total duration in milliseconds of the request from the start time to the last byte out
+            clientDuration: '%DURATION%'
+            # Total duration in milliseconds of the request from the start time to the first byte read from the upstream host
+            targetDuration: '%RESPONSE_DURATION%'
+            # Value of the "x-envoy-original-path" header (falls back to "path" header if not present)
+            path: '%REQ(X-ENVOY-ORIGINAL-PATH?:PATH)%'
+            # Upstream cluster to which the upstream host belongs to
+            upstreamName: '%UPSTREAM_CLUSTER%'
+            # Request start time including milliseconds.
+            systemTime: '%START_TIME%'
+            # Unique tracking ID
+            requestId: '%REQ(X-REQUEST-ID)%'
+          path: /dev/stdout

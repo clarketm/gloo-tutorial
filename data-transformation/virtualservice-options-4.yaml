@@ -1,0 +1,19 @@
+options:
+  transformations:
+    requestTransformation:
+      transformation_template:
+        # Merge the specified extractors to the request body
+        merge_extractors_to_body: {}
+        extractors:
+          # The name of this attribute determines where the value will be nested in the body (using dots)
+          root:
+            # Name of the header to extract
+            header: 'root'
+            # Regex to apply to it, this is needed
+            regex: '.*'
+          # The name of this attribute determines where the value will be nested in the body (using dots)
+          payload.nested:
+            # Name of the header to extract
+            header: 'nested'
+            # Regex to apply to it, this is needed
+            regex: '.*'
