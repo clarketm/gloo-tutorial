@@ -19,6 +19,9 @@ glooctl add route --name echo --path-prefix / --dest-name echo
 #Make sure the virtual service and route are Accepted:
 #glooctl get upstream echo
 
+# NOTE: run tunnel to access Gloo locally.
+minikube tunnel -c &
+
 ##############################################################################################################################
 # Section 1 - Response Code
 ##############################################################################################################################
