@@ -1,0 +1,10 @@
+healthChecks:
+- healthyThreshold: 2
+  httpHealthCheck:
+    path: /api/pets
+  interval: 10s
+  timeout: 10s
+  unhealthyThreshold: 2
+loadBalancerConfig:
+  healthyPanicThreshold: 0
+  random: {}
