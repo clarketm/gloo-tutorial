@@ -1,4 +1,4 @@
-# Gloo Tutorials
+# Gloo Tutorial
 
 https://www.katacoda.com/solo-io
 
