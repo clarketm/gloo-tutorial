@@ -52,6 +52,7 @@ glooctl get upstreams default-petstore-v1-8080
 #|          UPSTREAM        |    TYPE    |  STATUS  |          DETAILS       |
 #+--------------------------+------------+----------+------------------------+
 #| default-petstore-v1-8080 | Kubernetes | Accepted | svc name : petstore-v1 |
+#...
 
 #The application endpoints were discovered by Gloo’s Function Discovery (fds) service. This was possible because the petstore application implements
 #OpenAPI (specifically, discovering a Swagger JSON document at petstore-svc/swagger.json).
